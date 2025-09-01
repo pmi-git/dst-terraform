@@ -19,7 +19,12 @@ resource "aws_instance" "web" {
   subnet_id     = var.subnet_id
   vpc_security_group_ids = var.vpc_security_group_ids
 
-  user_data = file("${path.module}/../../install_wordpress.sh")
+  user_data = templatefile("${path.module}/../../install_wordpress.sh", {
+    db_name     = var.db_name
+    db_username = var.db_username
+    db_password = var.db_password
+    db_host     = var.db_host
+  })
 
   tags = {
     Name = "${var.project_name}-web-server"

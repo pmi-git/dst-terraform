@@ -23,6 +23,11 @@ module "ec2" {
   project_name   = var.project_name
   subnet_id      = module.networking.public_subnet_id
   vpc_security_group_ids = [module.networking.web_sg_id]
+  # Passage des infos DB au script d’installation
+  db_name     = var.db_name
+  db_username = var.db_username
+  db_password = var.db_password
+  db_host     = module.rds.endpoint
 }
 
 module "rds" {

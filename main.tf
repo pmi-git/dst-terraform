@@ -37,6 +37,7 @@ module "rds" {
 
 module "ebs" {
   source = "./modules/ebs"
+  project_name = var.project_name
   instance_id = module.ec2.instance_id
   az          = module.ec2.availability_zone
 }

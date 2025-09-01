@@ -19,7 +19,7 @@ resource "aws_db_instance" "wordpress" {
   multi_az                = true
   skip_final_snapshot     = true
   publicly_accessible     = false
-  storage_encrypted       = true
+  storage_encrypted       = false
   vpc_security_group_ids  = var.vpc_security_group_ids
   db_subnet_group_name    = aws_db_subnet_group.main.name
 

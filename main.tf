@@ -28,6 +28,9 @@ module "ec2" {
 module "rds" {
   source = "./modules/rds"
   project_name   = var.project_name
+  db_username    = var.db_username
+  db_password    = var.db_password
+  db_name        = var.db_name
   db_subnet_ids  = module.networking.private_subnet_ids
   vpc_security_group_ids = [module.networking.rds_sg_id]
 }
